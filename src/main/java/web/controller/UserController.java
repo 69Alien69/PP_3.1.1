@@ -48,6 +48,7 @@ public class UserController {
 
     @PostMapping("/edit")
     public String editUser(@ModelAttribute("user") User user) {
+        userService.saveUser(user);
         return "redirect:list";
     }
 
