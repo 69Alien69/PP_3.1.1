@@ -2,10 +2,7 @@ package web.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import web.model.User;
 import web.service.UserService;
 
@@ -34,6 +31,12 @@ public class UserController {
     @PostMapping("/add")
     public String addUser(@ModelAttribute("user") User user) {
         userService.saveUser(user);
+        return "redirect:list";
+    }
+
+    @PostMapping("/delete")
+    public String removeUser(@RequestParam("userId") Long id) {
+        userService.removeUserById(id);
         return "redirect:list";
     }
 
