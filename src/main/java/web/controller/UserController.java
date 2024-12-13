@@ -40,4 +40,15 @@ public class UserController {
         return "redirect:list";
     }
 
+    @GetMapping("/edit")
+    public String editUserForm(Model model, @RequestParam("userId") Long id) {
+        model.addAttribute("user", userService.getUser(id));
+        return "edit";
+    }
+
+    @PostMapping("/edit")
+    public String editUser(@ModelAttribute("user") User user) {
+        return "redirect:list";
+    }
+
 }

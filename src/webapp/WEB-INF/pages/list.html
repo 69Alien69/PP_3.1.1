@@ -23,8 +23,9 @@
                 <td th:text="${user.getLastName()}"/>
                 <td th:text="${user.getEmail()}"/>
                 <td>
-                    <form action="/users/edit">
-                        <button>edit</button>
+                    <form th:action="@{/users/edit}">
+                        <input type="hidden" th:name="userId" th:value="${user.getId()}">
+                        <button type="submit">edit</button>
                     </form>
                 </td>
                 <td>
